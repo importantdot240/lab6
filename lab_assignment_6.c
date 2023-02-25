@@ -1,8 +1,31 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 int search(int numbers[], int low, int high, int value) 
 {
-	return -1;
+	//int numbers has the total amount of indexes in the array
+
+    int mid;
+    if (low <= high){
+        //get midpoint
+        mid = (low + high)/2;
+        //chech if item is present at mid 
+        if (numbers[mid] == value) {
+            return mid;
+        }
+        //perform binary search algorithm to check where item is located.
+        else if (numbers[mid] > value){
+        
+        return (search(numbers, low, mid-1, value));
+        }
+
+        else {
+
+            return (search (numbers, mid +1, high, value));
+        }
+
+    }    
+    return -1;
 }
 
 void printArray(int numbers[], int sz)
